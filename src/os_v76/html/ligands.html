@@ -1,0 +1,13 @@
+<HTML VERSION="2.0">
+<HEAD>
+<TITLE>RNA, DNA, Prosthetic Groups and Ligands </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" link="#0000ff" Vlink="#660099">
+<H1>RNA, DNA, Prosthetic Groups and Ligands</H1>
+<HR>
+<P>You may use <B>OS</B> to calculate the occluded surface and raylengths of non-amino acid molecules in a structural model. Simply change the <B><TT>HETATM</B></TT> to <B><TT>ATOM</B></TT> and make sure that the rest of each record corresponds to PDB format. 
+<P>In addition you should make sure that each element in your PDB file has an entry in the <B>radii</B> file. This file is temporarily deposited in your <I>cwd</I> for the <B>OS</B> run. If you want to make your own, copy it to your directory using the command in <B><I>os.run</B></I>. Then edit the file.
+<P><B>Note</B>: The analysis programs, occsurf and respak recognize only the 20 amino acid names and CYT (for OPLS dissulfide linked residues) and UNK (for all others including ligands). If you want analysis of ligand packing change the PDB file or the "prot.srf" file so that all three-letter residue names are one of the above.
+<HR>
+</BODY>
+</HTML>

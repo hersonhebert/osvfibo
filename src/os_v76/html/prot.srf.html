@@ -1,0 +1,58 @@
+<HTML VERSION="2.0">
+<HEAD>
+<TITLE> prot.srf file </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" link="#0000ff" Vlink="#660099">
+<H1>prot.srf file</H1>
+<P><FONT SIZE="3">The <B>prot.srf</B> file contains all the information from the calculation of occluded surface
+and extension of surface normals. The additional programs in this package
+analyze the data in this file.</FONT> </P>
+<HR>
+<P>A sample of a typical<B> prot.srf</B> file is explained below: </P>
+<PRE>
+...
+AVG for ATOM: CG2   28.374 es    2.792 os   31.166 ts    0.527 Rln THR   13
+INF THR   13@CG2_>LEU  14@O___     7 pts   1.412 A2    0.175 Rlen  3.74 Dxx
+INF THR   13@CG2_>ILE  15@CG1_     5 pts   0.858 A2    0.840 Rlen  5.94 Dxx
+INF THR   13@CG2_>MET  26@CE__     1 pts   0.299 A2    0.991 Rlen  6.52 Dxx
+INF THR   13@CG2_>ILE  15@CA__     1 pts   0.223 A2    0.964 Rlen  6.11 Dxx
+    ES_Total      :   57.962                                       THR   13
+    ES_Backbone   :   10.702                                       THR   13
+    ES_Side Chain :   47.260                                       THR   13
+    OS_Total      :   32.587                                       THR   13
+    OS_Backbone   :   25.113                                       THR   13
+    OS_Side Chain :    7.474                                       THR   13
+    Ave_Raylength :    0.430                                       THR   13
+    MC_RAYLENGTH  :    0.426                                       THR   13
+    SC_RAYLENGTH  :    0.438                                       THR   13
+...
+</PRE>
+<HR>
+<P>where, </P>
+<DL>
+<DT><FONT SIZE="3">For the <B>AVG</B> line:</FONT> 
+<DD><B>es</B> is the exposed surface area in Angstroms for that atom 
+<DD><B>os</B> is the occluded surface area in Angstroms for that atom 
+<DD><B>ts</B> is the total surface area in Angstroms for that atom 
+<DD><B>Rln</B> is the mean raylength for that atom 
+</DL>
+<P><DT><FONT SIZE="3">The first <B>INF</B> line means the following:</FONT>
+<DD>The <B>CG2</B> atom of <B>THR 13</B> is occluded by the <B>O</B> atom of <B>LEU  14</B>;
+<DD>seven (<B>6</B>) surface points (<B>pts</B>) with a total surface area of <B>1.412</B> square Angstoms (<B>A2</B>) is occluded;
+<DD>the mean fractional raylength (<B>Rlen</B>) for this occluded patch is <B>0.175</B>; 
+<DD>the distance between the <B>CG2</B> and <B>O</B> atom centers is <B>3.74</B> Angstroms (<B>Dxx</B>). 
+<P><FONT SIZE="3">In the residue summary section:</FONT> </P>
+<DD><B>ES_Total</B> is the total exposed surface area for THR 13
+<DD><B>ES_Backbone</B> is the exposed surface area of the N, CA, C, O atoms 
+<DD><B>ES_Side Chain</B> is the exposed surface area of the side chain atoms 
+<DD><B>OS_Total</B> is the total exposed surface area 
+<DD><B>OS_Backbone</B> is the exposed surface area of the N, CA, C, O atoms 
+<DD><B>OS_Side Chain</B> is the exposed surface area of the side chain atoms 
+<DD><B>Ave_Raylength</B> is the mean fractional raylength for the residue (Equals 1.0 if there is
+no occluding van der Waals surface within 2.8 Angstroms of the molecular
+surface of THR 13; equals 0.0 if 100% of the molecular surface of THR 13
+were in contact with van der Waals surface of other atoms.) 
+<DD><B>MC_RAYLENGTH and SC_RAYLENGTH</B> break down the raylength averages to main chain and side chain components.
+<HR>
+</BODY>
+</HTML>

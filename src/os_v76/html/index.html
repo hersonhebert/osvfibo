@@ -1,0 +1,175 @@
+<HTML>
+<HEAD>
+
+<!-- EDIT -->
+<TITLE>
+Occluded Surface Description
+</TITLE>
+
+<!-- EDIT -->
+<META name="description" content=" package of programs to calculate the occluded surface and atomic packing of protein structures">
+
+<!-- EDIT -->
+<META name="keywords" content="Occluded surface, packing"> 
+
+</HEAD>
+
+<BODY BGCOLOR="#ffffff" TEXT="#000000" link="#0000ff" Vlink="#660099">
+
+
+<P><!-- Add contents here -->
+
+<center><H2>Occluded Surface (OS)</H2></center>
+<P>
+<center>
+<IMG SRC="1ubq_44_rays.png" ALIGN="MIDDLE" WIDTH="320" HEIGHT="240" BORDER="3">
+<IMG SRC="1ubq_44_dots.png" ALIGN="MIDDLE" WIDTH="320" HEIGHT="240" BORDER="3">
+</center>
+
+<P><B>OS</B> is a package of programs to calculate the <B>occluded surface</B> and <B>atomic packing</B> of protein model structures.</P>
+<HR>
+<P><B>Occluded surface</B> is defined as the molecular surface that is less than 2.8 Angstroms from
+the surface of neighboring non-bonded atoms. That is, if a water molecule <B>cannot</B> fit between
+ two atoms they occlude each other. Occluded surface is similar
+to buried surface but is more sensitive to packing geometry than buried
+surface identified using a rolling probe. </P>
+
+<P>To calculate occluded surface, normals at the molecular surface are extended
+outward until they intersect neighboring van der Waals surface. The collection
+of extended normals, and their respective lengths, defines the <B>packing</B> of
+ each atom in a structural model. The figure above on the left illustrates this concept.</P>
+
+<ul>
+<li>
+Either the <b>normals</b> or the molecular surface <b>patches</b> (above right) that represent the occluded surface may be displayed in PyMOL using scripts provided.
+</li>
+<P>
+<li>
+Analysis of the <B>occluded surface</B> enables one to identify amino acid residues in
+ <I>unusual occluded surface environments</I> compared to a database of high resolution structures. 
+Residues in an unusual
+environment are frequently <B>incorrectly modeled</B>, involved in<B> crystal contacts</B>, 
+or involved in <B>ligand binding</B>.
+</li>
+<p>
+<li>
+A weighted parameter, <B>Psr</B>, related to the <B>occluded surface</B> is 
+within a narrow range for native protein structures; if a protein model
+has a <B>Psr</B> value outside this range the model is probably wrong in at least some areas. </P>
+</li>
+<P>
+<li>Analysis of the collection of extended normals (<B>raylengths</B>) and their associated occluded 
+surface enables an estimation of the <B>packing</B> of the protein both at the <B>residue level</B>
+ and for the protein as a <B>whole</B>. The <I>output list </I>identifies all atoms which interact with each atom in the structure, the
+surface area involved in the interaction and the average raylength for that
+interacting patch of surface area. 
+</li>
+<p>
+<li>
+A combination of <b>occluded surface area</b> and <b>average length of the normals</b>
+may be used to obtain the <B>Occluded Surface Packing (OSP)</b> value for each residue.
+These residue <B>OSP</B> values are useful for identifying regions of close packing versus areas
+of loose packing in a protein. 
+</li>
+<p>
+<li>
+Analysis of <B>inter-chain occluded surface</B> allows a detailed calculation of protein-protein interactions.</P>
+</li>
+</ul>
+<p>
+<HR>
+<P><B><FONT SIZE="5">Input </FONT><FONT SIZE="3"></FONT></B></P>
+<P><B>Use of the program requires four files:</B> </P>
+
+<P><B>1.</B> A <B>PDB</B> <B>file</B> of coordinates. This must be a '<B>clean</B>' file with no <I>alternate 
+conformations</I>; no <I>hydrogens</I>; and only <I>one chain</I>. You should <I>renumber</I> your multi-chain 
+files to be <I>sequentially</I> numbered, otherwise the output will be unintelligible because chain identifiers
+are not kept. </P>
+<P>A script to clean up a PDB file is described <A HREF="extract_descrip.html">here</A>. </P>
+<P>A simple <A NAME="renumber">FORTRAN</A> program to renumber your clean PDB file is included in the OS distribution. 
+<BR>
+Edit your [<i>PDBCode</i>].<i>pdb</i> (or [<i>PDBCode</i>].<i>cln</i>) file so that the first residue has the number you want to start with.
+<BR>
+Then launch the [<i>path</i>]/<i>os_v75</i>/<i>bin</i>/<i>renum</i> program from the command line and follow the prompt. Your renumbered file will be called <i>new.pdb</i>.
+
+</P>
+<P>How to handle RNA, DNA, prosthetic groups and other ligands is described <A HREF="ligands.html">here</A>. </P>
+
+<P><B>2.</B> A <B>command file</B>, <I>os.run</I> </P>
+<P>A sample file is in the OS distribution. You should <B>uncomment the appropriate lines</B> in <I>os.run</I> 
+to run the different programs in the package. </P>
+<P>An example of <I>os.run</I> is <A HREF="os_run.txt">here</A>. </P>
+
+<P><B>3. </B>A <B>data file</B>, <I>os.fil</I>, which tells <B>OS</B> the PDB filename, the residue numbers to calculate, and whether or not
+you want a file to display the occluded patches and/or normals using PyMOL. </P>
+<P>An example of <I>os.fil</I> with further explanation is <A HREF="os.fil.html">here</A>. </P>
+
+<P><B>4.</B> An <B>atom radii</B> file, <I>radii</I> </P>
+A default <A HREF="radii.txt">radii file</a> is supplied and will be read by the program. If you want to use your own radii set,
+edit the file, <i>radii</I>, in the <i>data</i> subdirectory of the OS distribution.
+
+<HR>
+<H2><B>Execution</B></H2>
+<P>If the above files have been deposited in your working directory, and the <i>os.run</i> file has been edited to define the executable file location, to start simply type: </P>
+<PRE>
+   ./os.run
+</PRE>
+<HR>
+<H2>Output</H2>
+<P>1. <A HREF="prot.srf.html">The prot.srf file</A> </P>
+<P>2. <A HREF="eval.html">Evaluation of occluded surface environment</A>. </P>
+<P>3. <A HREF="packing.html">Evaluation of the packing of the model</A>. </P>
+<P>4.<A HREF="intch.html"> Evaluation of interchain occluded surface.</A></P>
+<P>5. <A HREF="ray_display.html">Display of the occluded surface and/or normals using PyMOL.</A> </P>
+<HR>
+<H3>References</H3>
+<P><B>If results derived from the calculation of occluded surface are published
+please cite the following: </B>
+<BR>
+<A HREF="http://www.csb.yale.edu/people/core/pjf/os_jmr.pdf"><IMG SRC="pdf.gif" WIDTH="29" HEIGHT="32" BORDER="0" SGI_FULLPATH="/srv/local/os_v6/html/pdf.gif"></A> Pattabiraman, N., Ward, K.B. and Fleming, P.J. (1995) Occluded Molecular
+Surface: Analysis of Protein Packing, <I>Journal of Molecular Recognition</I>, <B>8</B>:334-344.
+(This is the original description of the OS method). </P>
+
+<P>
+<A HREF="http://www.csb.yale.edu/people/core/pjf/fleming_jmb.pdf"><IMG SRC="pdf.gif" WIDTH="29" HEIGHT="32" BORDER="0"></A>
+Fleming,P.J.and F.M.Richards (2000) Protein Packing:Dependence on Protein Size, Secondary Structure
+and Amino Acid Composition. <i>J.Mol.Biol.</i> 299, 487-498. (This is the most complete description of occluded surface packing and includes packing results for a dataset of 152 proteins).
+</P>
+<P>
+Vorobjev, Y.N. and Hermans, J. (1997) SIMS: Computation of a Smooth Invariant Molecular Surface. <I>Biophysical Journal</I>, <B>73</B>:722-732.
+(SIMS is used to calculate the dot surface for OS).</P>
+
+
+<P><B>An example of increased packing in the stabilization of a hyperthermophilic protein:</B>
+
+<P>
+<A HREF="http://www.csb.yale.edu/people/core/pjf/tbp_jmb.pdf"><IMG SRC="pdf.gif" WIDTH="29" HEIGHT="32" BORDER="0" SGI_FULLPATH="/srv/local/os_v6/html/pdf.gif"></A> Brian S. DeDecker, Ronan O'Brien, Patrick J. Fleming, James H. Geiger, Stephen
+P. Jackson, Paul B. Sigler (1996) The Crystal Structure of a Hyperthermophilic
+Archaeal TATA-box Binding Protein, <I>J. Mol. Biol</I>., <B>264</B>, 1072 - 1084.</P>
+
+<P><B>A correlation of <B>OS</B> with the energetics of protein-protein interaction is described in the
+following paper:</B>
+<BR>
+<A HREF="http://www.csb.yale.edu/people/engelman/kgf/jmb091997.pdf"><IMG SRC="pdf.gif" WIDTH="29" HEIGHT="32" BORDER="0" SGI_FULLPATH="/srv/local/os_v6/html/pdf.gif"></A> Fleming, KG, Ackerman, AL and DM Engelman (1997) &quot;The Effect of Point Mutations
+on the Free Energy of Transmembrane alpha-Helix Dimerization&quot; <I>J. Mol. Biol. </I><B>272:</B> 266-275. </P>
+
+<P><b>OS was used to show that most NMR structures have different packing than X-ray crystal structures in the following report:</b>
+<BR>
+<A HREF="http://www.csb.yale.edu/people/core/pjf/os_ratnap.pdf"><IMG SRC="pdf.gif" WIDTH="29" HEIGHT="32" BORDER="0"></A> Ratnaparkhi et al. (1998) Discrepancies between the NMR and X-ray Structures of Uncomplexed Barstar: Analysis Suggests That Packing Densities of Protein Structures Determined by NMR Are Unreliable, <I>Biochemistry</I>, <B>37</B>, 6958-6966.</P>
+ 
+<P><B>A correlation of <B>OS</B> with the energetics of cavity formation in proteins is described in the
+following paper:</B>
+<BR>
+<A HREF="http://www.csb.yale.edu/people/core/pjf/ratnaparkhi_biochem_2000.pdf"><IMG SRC="pdf.gif" WIDTH="29" HEIGHT="32" BORDER="0"></A> Ratnapharkhi, G.S. and Varadarajan, R. (2000) &quot;Thermodynamic and Structural Studies of Cavity Formation in Proteins Suggest That Loss of Packing Interactions Rather Than the Hydrophobic Effect Dominates the Observed Energetics.
+<I>Biochemistry </I><B>39:</B> 12365-12374. </P>
+
+<HR>
+<P>Bug reports to <I><A HREF="mailto:pat.fleming@jhu.edu">Pat Fleming</I></A> are appreciated. </P>
+
+<P><!-- End contents here -->
+
+<HR>
+
+</BODY>
+</HTML>
+

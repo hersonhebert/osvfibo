@@ -1,0 +1,37 @@
+<HTML VERSION="2.0">
+<HEAD>
+<TITLE>Evaluation of OS environment </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" link="#0000ff" Vlink="#660099">
+<H1>Evaluation of OS environment</H1>
+<P>The <B>occluded surface </B>area for each residue is compared to the distribution of occluded surface areas for that type of amino acid in a data set of high resolution structures. The output is found in the file, <I>prot.eval</I> as shown below.
+<P>The two important parameters here are <B>Ri</B> and <B>Psr</B>. A plot of <B>Ri</B> tells you which residues are in unusual environments. And <B>Psr</B> should be between 0.60 and 0.74 or your structure is probably wrong.
+<HR>
+<PRE>
+...
+Sw:           26.87    THR  316
+St:           90.10    THR  316
+Ri:            0.30    THR  316
+Sw:           52.73    PRO  317
+St:           92.00    PRO  317
+Ri:            0.57    PRO  317
+    Total_Res:      317 
+    Pw:        20144.56 
+    Pi:        30304.49 
+    Psr:           0.66 
+</PRE>
+<P>where,
+<P><B>Sw</B> is a weighted surface area of the residue. This parameter is a function of both the occluded surface area of the residue and the distribution of occluded surface areas found in a data set of high resolution structures.
+<P><B>St</B> is the total surface area for that residue type.
+<DL>
+<DT><B>Ri</B> is a weighted parameter describing how &quot;usual&quot; the occluded surface environment is:
+<DD> Below a value of 0.2 indicates that the residue is in a highly unusual environment.
+<DD>A value of 1.0 indicates that the residue is in a completely average environment for that residue type.
+</DL>
+<P><B>Total_Res</B> is the total number of residues
+<P><B>Pw</B> is the weighted surface area of the whole protein
+<P><B>Pi</B> is the ideal weighted surface area of a protein with the same amino acid composition.
+<P><B>Psr</B> is the normalized protein surface ratio. A value between 0.60 - 0.74 is found for <I>properly folded proteins</I>. If your structure has a <B>Psr</B> value outside of this range it is probably wrong.
+<HR>
+</BODY>
+</HTML>

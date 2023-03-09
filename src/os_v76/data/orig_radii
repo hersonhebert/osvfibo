@@ -1,0 +1,36 @@
+H          1.25   
+HZ1        1.20
+HZ2        1.20
+HZ3        1.20
+HN         1.20
+C          1.90
+CA         1.90
+CB         1.90
+CG         1.90
+CD         1.90
+CE         1.90
+CG2   THR  1.90
+CD    GLU  1.90
+CDT   GLU  1.90
+CD    GL-  1.90
+CG    ASP  1.90
+CG    AS-  1.90
+CG    HIS  1.90
+CD2   HIS  1.90
+CE1   HIS  1.90
+CG    HI+  1.90
+CD2   HI+  1.90
+CE1   HI+  1.90
+O          1.40
+N          1.50
+NZ    LYS  1.50
+NZ    LY+  1.50
+NZT   LYS  1.50
+S          1.85
+OW    H2O  1.85
+H1    H2O  1.00
+H2    H2O  1.00
+H1    HOH  1.00
+H2    HOH  1.00
+ZN         1.35
+FE         0.64

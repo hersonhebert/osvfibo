@@ -1,0 +1,26 @@
+<HTML VERSION="2.0">
+<HEAD>
+<TITLE>Displaying occluded surface patches and/or surface normals in PyMOL </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" link="#0000ff" Vlink="#660099">
+<H1>Displaying occulded surface dots or extended rays in PyMOL</H1>
+<P>The file <B><I>raydisp.lst</I></B> (output by <B>OS</B>) contains the coordinates, lengths, and normal vectors for the rays of the residue(s) you specified in the <i>os.fil</i> file (if you entered a "<b>y</b>" on the last line)..
+<HR>
+<P>
+Copy the <i>os_v76/bin/Disp_dots.py</i> and <i>Disp_rays.py</i> files to your working directory (where the <B><I>raydisp.lst</I></B> file is located).
+<P>Launch <B>PyMOL</B> in your working directory and in the command window type,
+<P>
+<tt> select os_res, resid </tt>[<tt>whatever_residues_listed_in_os.fil</tt>]
+<P>
+Display the <b>os_res</b> object as spheres.
+<P>
+Then type the following in the command window,
+<P>
+<tt>run Display_dots.py</tt> and follow the prompt.
+<br>
+or
+<br>
+<tt>run Display_rays.py</tt> and follow the prompt.
+<HR>
+</BODY>
+</HTML>

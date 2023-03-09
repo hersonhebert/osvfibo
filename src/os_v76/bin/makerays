@@ -1,0 +1,2 @@
+awk -f $OSDIR/bin/awk.ray_dsply $PWD/raydist.lst > $PWD/rays
+rm $PWD/raydist.lst

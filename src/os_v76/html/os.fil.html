@@ -1,0 +1,33 @@
+<HTML VERSION="2.0">
+<HEAD>
+<TITLE>os.fil </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" link="#0000ff" Vlink="#660099">
+<H1>os.fil</H1>
+<HR>
+<P>The data file, <I>os.fil</I>, tells <B>OS</B> </P>
+<P>1. the name of the clean <B>PDB</B> file </P>
+<P>2. the <B>range of residues</B> to calculate the occluded surface for (all atoms are considering as potential
+occluding atoms, but the occluded surface is only calculated for those given
+in the range) </P>
+<P>3. whether or not to <B>create a file for display of the extended rays </B> using <B>PyMOL</B> as described <a href="ray_display.html"> here </a></P> 
+<HR>
+<P>The format of <I>os.fil</I> is as follows; </P>
+<PRE>
+filename.pdb
+2
+167
+n
+</PRE>
+<P>An example to display the rays as in the <A HREF="1ubq_44_rays.png">figure</A> on the first page is: </P>
+<PRE>
+1stn.pdb
+23
+23
+y
+</PRE>
+<P>The &quot;<B><TT>y</TT></B>&quot; in the last line causes a file called <B><I>rays</I></B> to be generated. How to display the rays using PyMOL is described <A HREF="ray_display.html">here</A>. </P>
+<P></P>
+<HR>
+</BODY>
+</HTML>

@@ -1,0 +1,97 @@
+#!/bin/csh
+#
+# Command file for OS version 7.5
+#
+# NOTE: You need to create "os.fil" according to docs!
+#
+######################################################
+#
+# NOTE: Set the path to your installation on next line
+#
+setenv OSDIR /home/herson/Documentos/osvfibo/src/os_v76
+setenv PWD $cwd
+#
+######################################################
+set path = ( $OSDIR/bin $path )
+
+# Check to see if possibly user-modified radii is present
+if (! -r $PWD/radii ) then
+   cp -p $OSDIR/data/radii $PWD/radii
+endif
+#
+# RUN THE OS MAIN PROGRAM
+#
+
+main75 < os.fil
+
+######################################################
+#
+# Uncomment below to activate specific
+#    programs for analysis of OS
+#
+######################################################
+# Prepare files for plotting and analyzing Packing Value
+#  for each residue
+#
+# The summary output will be in the file, "prot.pak"
+# The x,y list for plotting will be in "pak.plt"
+# The list of PakVal values will be in "pak.dat"
+#   for statistics analysis
+#
+# If not wanted comment the next four lines
+#
+#respak75
+#sed '/Resnum/d' prot.pak > tmp.pak
+#awk '{print $1,$5}' tmp.pak > pak.plt
+#awk '{print $5}' tmp.pak > pak.dat
+#rm -f tmp.pak
+######################################################
+# Run program to evaluate OS environments
+#
+# Output is in file, "prot.eval"
+#
+# If wanted uncomment next three lines
+#
+#cp $OSDIR/data/tot_aa_hsg.lis $PWD
+#occsurf75 > prot.eval
+#rm -f tot_aa_hsg.lis
+######################################################
+# Prepare file of Normalized Residue Surface Ratio, 
+#  Ri, for plotting
+#
+# The x,y list for plotting is in "ri.plt"
+#
+# If wanted uncomment next three lines
+#
+#grep 'Ri:' prot.eval > ri.tmp
+#awk '{printf("%4s%9.2f\n",$4,$2)}' ri.tmp > ri.plt
+#rm -f ri.tmp
+######################################################
+# Prepare file of average Raylengths  
+#  for each residue
+#
+# The x,y list for plotting is in "raylength.plt"
+#
+# If wanted uncomment next three lines
+#
+#grep 'Ray' prot.srf > ray.tmp
+#awk '{printf("%4s%9.2f\n",$5,$3)}' ray.tmp > raylength.plt
+#rm -f ray.tmp 
+######################################################
+# Analyze interchain occluded surface
+#
+# Concatenate the chains into the 
+#  same PDB input file and reunumber consecutively
+# Then edit the xxxx and yyyy in the line below to be
+#  the residue number of the first and last residue in
+#  the chain to be calculated and uncomment the line.
+#
+#/usr/bin/echo 'xxxx\nyyyy\n' | intchos75
+######################################################
+#
+# Clean up after run
+#
+rm -f *.ms
+rm -f part*
+rm -f file.srf
+

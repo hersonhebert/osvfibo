@@ -1,0 +1,40 @@
+<HTML VERSION="2.0">
+<HEAD>
+<TITLE>Evaluation of packing </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" link="#0000ff" Vlink="#660099">
+<H1>Evaluation of packing</H1>
+<P>The <B>Occluded Surface Packing Value (OSP)</B> is calculated for each residue. This value is 0.0 for completely exposed
+residues and is 1.0 for the impossible case where 100% of molecular surface
+is in contact with other van der Waals surface. The average for a protein
+is dependent on the molecular weight of the protein. </P>
+<P>For each atom that has occluded surface, the value of <B>(os*[1-raylength])</B> is calculated. 
+Here <B>raylength</B> is the fractional length of the extended normal. (A fractional length of 1.0 is equivalent to the diameter of a water molecule, 2.8 Ang.)
+These values are summed for each residue to give the parameter
+listed in column four of the output file below. This parameter is divided by the<I> <B>total surface area</B></I> for that amino acid type to give a <B><A NAME="nrmlpakval">normalized occluded surface packing value</B></A> listed under &quot;<B>OSP</B>&quot; in the output file. </P>
+<P>Thus, if the complete residue surface is occluded, and all rays have a length
+of zero, the packing value is the same as the total residue surface area
+and <B>OSP</B> = 1.0. </P>
+<HR>
+<P>Output is in the file, <I>prot.pak</I> </P>
+<PRE>
+    Resnum  Resname       OS     os*[1-raylen]   OSP
+       74     THR       36.93       27.61       0.263
+       75      ?         0.0         0.0        0.0
+       76     ILE       41.35       20.30       0.178
+       77     ILE       41.15       24.81       0.219
+       78     PHE       56.07       38.81       0.269
+       79     GLY       46.99       35.25       0.659
+       80     VAL       55.52       38.29       0.397
+        ...
+</PRE>
+<P><B>Note</B>: If a residue has zero occluded surface the residue name
+will not be listed as for residue 75, above. </P>
+<HR>
+<P>The output file, <I>pak.plt</I>, contains columns 1 and 5 from the above file <B>without </B>the column labels for plotting <B>residue numbe</B>r <I>versus</I> <B>OSP</B>. </P>
+
+<P><B>Note for ligands in OS:</B> To calculate the ligand/protein <B><TT>OS</TT></B> and <B><TT>os*[1-raylen]</TT></B> change the name of the ligand to <B><TT>UNK</TT></B> in the <B>prot.srf </B>file. The program <B>respak</B> will not calculate parameters for unrecognized residue names.</P>
+
+<HR>
+</BODY>
+</HTML>

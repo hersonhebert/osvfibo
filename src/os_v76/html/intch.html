@@ -1,0 +1,78 @@
+<HTML VERSION="2.0">
+<HEAD>
+<TITLE>Evaluation of Interchain Occluded Surface</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" link="#0000ff" Vlink="#660099">
+<H2>Evaluation of Interchain OS</H2>
+<P>Only <B>intermolecular occlusion</B> is considered here. To run <B>intchos</B> concatenate the two chains (A and B, or segid A and segid B) or two interacting
+molecues into one PDB file and renumber the residues using <B><A HREF="index.html#renumber">renum</B></A>. Then enter the numbers of the first and last residues of one chain or
+one molecule in the indicated place in <B>os.run</B> and run <B>os.run</B>.</P>
+<P>The program <B>int</B>[er]<B>ch</B>[ain]<B>os</B> is in the <B>OS</B> installation and can be run standalone if you have a <B>prot.srf</B> file in your directory. The program <B>intchos</B> will ask you for the residue numbers of the first and last residues in
+one chain or one molecule. The output will be in <B>intch.os</B>.</P>
+<P>For each atom that has occluded surface, the value of <B>os</B> and <B>(os*[1-raylength])</B> is calculated. These are summed for each residue to give the parameters
+listed in columns three and four of the output file, <B>intch.os</B>, as shown below. </P>
+<HR>
+<P>Output is in the file, <B><I>intch.os</I></B></P>
+<PRE>
+
+     Resnum  Resname       OS     os*[1-raylen]
+       ...
+       74     THR        0.45        0.00
+       75      ?         0.0         0.0
+       76     ILE       17.29        4.34
+       77      ?         0.0         0.0
+       78     PHE        4.05        1.95
+       79     GLY       23.35       17.54
+       80     VAL       23.16       14.20
+       81      ?         0.0         0.0
+       82     ALA        8.05        4.02
+       83     GLY       25.96       18.73
+       84     VAL       21.07       12.72
+       ...
+</PRE>
+<P><B>Note</B>: If a residue has zero interchain occluded surface the residue name will
+not be listed as for residues 75, 77, and 81above. </P>
+<P><B>Note for ligand docking OS:</B> To calculate the ligand/protein <B><TT>OS</TT></B> and <B><TT>os*[1-raylen]</TT></B> change the name of the ligand to <B><TT>UNK</TT></B> in the <B>prot.srf </B>file. The program <B>intchos</B> will not calculate parameters for unrecognized residue names.</P>
+
+<HR>
+You may also display the occluded surface dots on one chain or the other as in the following figures of glycophorin A transmembrane helix dimer. Any dimeric protein structure may be used, but the PDB file must be renumbered as described above.
+<P>
+<center>
+<img src="both_spheres.png" WIDTH="186" HEIGHT="296"> 
+<img src="a_sph_b_sticks.png" WIDTH="186" HEIGHT="296">
+<img src="a_only.png" WIDTH="186" HEIGHT="296">
+</center>
+
+These images were created in PyMOL where the occluded surface dots are color coded to raylength, green=long, red = short. 
+<br>
+For example, if running on a PDB file with renumbered two chains where chain one was 70-98
+and chain two was 99-127, you must run os twice.
+<br>
+The first <B><I>os.fil</B></I> would be,
+<br>
+<pre>
+pdbfile 
+70 
+98 
+y 
+</pre>
+Copy the <i>os_v76/bin/Disp_interchain_dots.py</i> to your working directory (where the <B><I>raydisp.lst</I></B> file is located).
+<br>
+Then load your PDB file in PyMOL and enter the following:
+<pre>
+PyMOL> run Disp_interchain_dots.py
+PyMOL> dots firstres=70, lastres=98
+</pre>
+These commands should give you something similar to the figures above.
+<P>
+To obtain corresponding occluded surface dots on the other chain, the second <B><I>os.fil</B></I> would be,
+<br>
+<pre>
+pdbfile
+99
+127
+y
+</pre>
+Run os again and visualize occluded dots on chain two, using firstres=99, lastres=127 in PyMOL.
+</BODY>
+</HTML>
