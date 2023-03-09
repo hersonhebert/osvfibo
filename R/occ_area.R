@@ -7,6 +7,7 @@ ocluded_area = function(path_pdb, first,last){
   system("chmod 777 src/os_v76/os.run")
   setwd("src/os_v76/")
   system("./compile.csh")
+  system("R.")
   system("./os.run")
   prot = read_prot("prot.srf")
   setwd(path_orign)
