@@ -1,3 +1,0 @@
-teste = function(){
-  getwd()
-}
