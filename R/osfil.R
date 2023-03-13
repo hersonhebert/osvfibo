@@ -11,8 +11,10 @@
 #'
 #' @export
 create_osfil = function(first, last, raydist){
-  # fileCon = file("src/os_v76/os.fil")
-  path_fil = "src/os_v76/os.fil"
-  writeLines(c("temp.pdb",first,last,raydist),path_fil)
+  #close(file("src/os_v76/os.fil"))
+  fileCon = file("src/os_v76/os.fil")
+  #path_fil = "src/os_v76/os.fil"
+  writeLines(c("temp.pdb",first,last,raydist),fileCon)
+  close(fileCon)
 
 }

@@ -8,7 +8,7 @@
 #
 # NOTE: Set the path to your installation on next line
 #
-setenv OSDIR /home/herson/Documentos/osvfibo/src/os_v76
+setenv OSDIR /home/herson/R/x86_64-pc-linux-gnu-library/4.2/osvfibo/src/os_v76
 setenv PWD $cwd
 #
 ######################################################

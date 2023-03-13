@@ -4,7 +4,7 @@
 \alias{ocluded_area}
 \title{Calculating Occluded Surface Areas.}
 \usage{
-ocluded_area(path_pdb, first, last, raydist)
+ocluded_area(path_pdb, first, last)
 }
 \arguments{
 \item{path_pdb}{Name or path of pdb.}
